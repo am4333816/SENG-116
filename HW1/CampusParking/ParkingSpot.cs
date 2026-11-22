@@ -7,25 +7,39 @@ public class ParkingSpot
 
     public ParkingSpot(int number)
     {
+        Number = number;
     }
 
     public bool IsFree()
     {
-        throw new NotImplementedException();
+        return Occupant == null;
     }
 
     public bool TryPark(Vehicle vehicle)
     {
-        throw new NotImplementedException();
+        if (!IsFree())
+        {
+            return false;
+        }
+
+        Occupant = vehicle;
+        return true;
     }
 
     public Vehicle? Leave()
     {
-        throw new NotImplementedException();
+        Vehicle? leaving = Occupant;
+        Occupant = null;
+        return leaving;
     }
 
     public string Describe()
     {
-        throw new NotImplementedException();
+        if (Occupant == null)
+        {
+            return $"#{Number} empty";
+        }
+
+        return $"#{Number} {Occupant.Plate}";
     }
 }

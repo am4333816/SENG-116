@@ -7,10 +7,12 @@ public class Vehicle
 
     public Vehicle(string plate, string owner)
     {
+        Plate = plate;
+        Owner = owner;
     }
 
     public string Describe()
     {
-        throw new NotImplementedException();
+        return $"{Plate} - {Owner}";
     }
 }
