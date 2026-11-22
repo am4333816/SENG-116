@@ -2,13 +2,18 @@ namespace CampusParking;
 
 public class Vehicle
 {
-    public readonly string Plate;
-    public readonly string Owner;
+    public string Plate { get; }
+    public string Owner { get; }
 
     public Vehicle(string plate, string owner)
     {
         Plate = plate;
         Owner = owner;
+    }
+
+    public static string NormalizePlate(string plate)
+    {
+        throw new NotImplementedException();
     }
 
     public string Describe()
