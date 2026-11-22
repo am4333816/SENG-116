@@ -9,6 +9,24 @@ public static class Tariff
 
     public static decimal FeeFor(int minutes)
     {
-        throw new NotImplementedException();
+        if (minutes < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(minutes), "The stay must not be negative.");
+        }
+
+        if (minutes <= FreeMinutes)
+        {
+            return 0m;
+        }
+
+        int units = (minutes + UnitMinutes - 1) / UnitMinutes;
+        decimal fee = units * UnitRate;
+
+        if (fee > MaxFee)
+        {
+            return MaxFee;
+        }
+
+        return fee;
     }
 }
